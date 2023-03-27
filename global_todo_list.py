@@ -12,17 +12,14 @@ todo_list.add(todo_2)
 is_writing = True
 
 if is_writing:
-
-    with open('rawData', 'w') as f:
-
+    with open("rawData", "w") as f:
         f.write(todo_list.to_json())
 
 else:
-    with open('rawData', 'r') as f:
+    with open("rawData", "r") as f:
         data = f.read()
 
         dict = json.loads(data)
-
 
         print(dict)
         print(type(dict))

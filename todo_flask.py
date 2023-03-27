@@ -2,21 +2,23 @@ import json
 
 from flask import Flask, request
 from ToDo import ToDoList, ToDoEntry
-from raw_data_loader import get_todo_list_from_file, write_to_file, write_example_raw_data
+from raw_data_loader import (
+    get_todo_list_from_file,
+    write_to_file,
+    write_example_raw_data,
+)
 
 app = Flask(__name__)
 
 
-
 @app.route("/")
 def hello_world():
-
     todo_list = get_todo_list_from_file("rawData")
 
     return todo_list.to_json()
 
 
-@app.route('/add', methods = ['POST'])
+@app.route("/add", methods=["POST"])
 def add():
     try:
         todo_list = get_todo_list_from_file("rawData")
@@ -40,7 +42,3 @@ def add():
 def reset():
     write_example_raw_data()
     return json.dumps({"result": "succ"})
-
-
-
-

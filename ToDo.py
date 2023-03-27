@@ -12,7 +12,6 @@ class ToDoEntry:
             print(f"else: kwargs: {kwargs}")
             self.__dict__.update(**kwargs)
 
-
     def mark_as_done(self):
         self.done = True
 
@@ -41,7 +40,12 @@ class ToDoList:
         self.todo_dict.pop(uuid, None)
 
     def as_str(self):
-        return ", ".join([todo_entry.description for uuid, todo_entry in self.todo_dict.items()])
+        return ", ".join(
+            [todo_entry.description for uuid, todo_entry in self.todo_dict.items()]
+        )
 
     def to_json(self):
-        return json.dumps({uuid: todo_entry.to_dict() for uuid, todo_entry in self.todo_dict.items()}, ensure_ascii=False)
+        return json.dumps(
+            {uuid: todo_entry.to_dict() for uuid, todo_entry in self.todo_dict.items()},
+            ensure_ascii=False,
+        )
