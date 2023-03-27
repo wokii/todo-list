@@ -1,6 +1,5 @@
 import json
 from ToDo import ToDoEntry, ToDoList
-from types import SimpleNamespace
 
 
 def read_from_file(file_name):
@@ -13,7 +12,6 @@ def read_from_file(file_name):
 
 def get_todo_list_from_file(file_name):
     raw_todo_dict = read_from_file(file_name)
-    print("raw_todo_dict", raw_todo_dict)
     todo_dict = {
         uuid: ToDoEntry(**entry_dict) for uuid, entry_dict in raw_todo_dict.items()
     }
@@ -23,7 +21,6 @@ def get_todo_list_from_file(file_name):
 
 def write_to_file(todo_list):
     with open("rawData", "w") as f:
-        print(f"writing: {todo_list.to_json()}")
         f.write(todo_list.to_json())
 
 

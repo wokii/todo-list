@@ -22,10 +22,7 @@ def hello_world():
 def add():
     try:
         todo_list = get_todo_list_from_file("rawData")
-        print(f"request {request}")
         todo_desc = request.form.get("desc", "")
-
-        print(f"todo_desc {todo_desc}")
 
         new_todo_entry = ToDoEntry(todo_desc)
         todo_list.add(new_todo_entry)
@@ -34,7 +31,6 @@ def add():
         return_msg = json.dumps(new_todo_entry.to_dict(), ensure_ascii=False)
         return return_msg
     except Exception as e:
-        print("e", e)
         return json.dumps({"error": "failed to add"})
 
 

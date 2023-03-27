@@ -20,7 +20,4 @@ else:
         data = f.read()
 
         dict = json.loads(data)
-
-        print(dict)
-        print(type(dict))
         # convert_file.write(json.dumps(todo_list.to_json()))

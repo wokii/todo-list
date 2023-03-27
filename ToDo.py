@@ -9,14 +9,12 @@ class ToDoEntry:
             self.uuid = str(uuid4())
             self.done = False
         else:
-            print(f"else: kwargs: {kwargs}")
             self.__dict__.update(**kwargs)
 
     def mark_as_done(self):
         self.done = True
 
     def to_dict(self):
-        print("to_dict", self.__dict__)
         return self.__dict__
 
     def as_str(self):
